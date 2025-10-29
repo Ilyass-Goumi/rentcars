@@ -1,0 +1,194 @@
+
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Car Gallery - Lightbox Test</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins",sans-serif}
+    body{background:#f5f6f8;padding:30px;display:flex;justify-content:center}
+    .car-section{width:100%;max-width:1100px}
+    .car-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    .car-info{padding:18px}
+    .car-header{display:flex;gap:12px;align-items:center}
+    .brand-logo{width:56px}
+    .car-info h2{font-size:1.25rem;color:#222}
+    .car-subtitle{color:#666;margin-top:8px;font-size:.95rem}
+
+    /* gallery */
+    .car-gallery{display:grid;grid-template-columns:2fr .9fr;gap:12px;padding:18px}
+    .main-photo{border-radius:10px;overflow:hidden;position:relative}
+    .main-photo img{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;transition:transform .35s ease}
+    .side-photos{display:flex;flex-direction:column;gap:10px}
+    .side-photos img{width:100%;height:88px;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform .25s,box-shadow .25s}
+    .side-photos img:hover{transform:scale(1.04);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+
+    .car-details{padding:18px;border-top:1px solid #eee}
+    .tags{display:flex;gap:8px;margin:12px 0}
+    .tag{background:#eef3f6;padding:7px 12px;border-radius:10px;font-weight:600;color:#333}
+
+    /* LIGHTBOX */
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:20px}
+    .lightbox.show{display:flex}
+    .lightbox-content{max-width:95%;max-height:88vh;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.6);object-fit:contain;display:block}
+    .lb-close{position:absolute;top:18px;right:22px;color:#fff;font-size:38px;cursor:pointer}
+    .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);border:none;color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:20px}
+    .lb-prev{left:18px} .lb-next{right:18px}
+    .thumb-strip{display:flex;gap:8px;padding:12px;overflow:auto;background:#fff;border-top:1px solid #eee}
+
+    /* responsive: on phone make thumbnails stacked vertical */
+    @media (max-width:600px){
+      .car-gallery{grid-template-columns:1fr;gap:16px}
+      .side-photos{flex-direction:column}
+      .side-photos img{height:260px}
+    }
+  </style>
+
+  <!-- ======= HEADER ======= -->
+
+
+  <!-- ======= SECTION GALERIE ======= -->
+  <section class="car-section">
+    <div class="car-card">
+      <div class="car-info">
+        <div class="car-header">
+          <img class="brand-logo" src="https://www.oneclickdrive.ma/application/views/img/brands_png_new/v1_hyundai.png" alt="logo">
+          <div>
+            <h2>
+Rent Hyundai Accent 2024</h2>
+            <div class="car-subtitle">Rent in Casablanca: Sedan, 5 Passengers, Black, Sporty, Luxury</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-gallery">
+        <div class="main-photo">
+          <img id="mainImage" src="https://static.oneclickdrive.com/uploads/cars/Hyundai_Accent_2024_32154_32154_26190926950-2_small.jpg?verocd=1.29" alt="main">
+        </div>
+
+        <div class="side-photos">
+          <img data-index="0" src="https://static.oneclickdrive.com/uploads/cars/Hyundai_Accent_2024_32154_32154_26190925813-2_small.jpg?verocd=1.29" alt="thumb1">
+          <img data-index="1" src="https://static.oneclickdrive.com/uploads/cars/Hyundai_Accent_2024_32154_32154_2619097478-2_small.jpg?verocd=1.29" alt="thumb2">
+          <img data-index="2" src="https://static.oneclickdrive.com/uploads/cars/Hyundai_Accent_2024_32154_32154_26191328439-6_small.jpg?verocd=1.29" alt="thumb3">
+        </div>
+      </div>
+
+      <div class="car-details">
+        <h3>
+Rent Hyundai Accent 2024</h3>
+        <p class="location">📍 Mohammed V Airport, Casablanca</p>
+        <div class="tags">
+          <span class="tag">2024</span><span class="tag">Euro</span><span class="tag">Sedan</span>
+        </div>
+      </div>
+
+    
+    </div>
+  </section>
+
+  <!-- ======= LIGHTBOX ======= -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-prev" aria-label="Previous">&#8249;</button>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="zoomed">
+    <button class="lb-next" aria-label="Next">&#8250;</button>
+    <span class="lb-close" aria-label="Close">&times;</span>
+  </div>
+
+
+
+  <!-- LIGHTBOX (plein écran) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-prev" aria-label="Previous">&#8249;</button>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="zoomed">
+    <button class="lb-next" aria-label="Next">&#8250;</button>
+    <span class="lb-close" aria-label="Close">&times;</span>
+  </div>
+
+  <script>
+    // attendre que DOM soit prêt (important)
+    document.addEventListener('DOMContentLoaded', () => {
+      const mainImage = document.getElementById('mainImage');
+      const thumbs = Array.from(document.querySelectorAll('.side-photos img'));
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const closeBtn = document.querySelector('.lb-close');
+      const prevBtn = document.querySelector('.lb-prev');
+      const nextBtn = document.querySelector('.lb-next');
+
+      // construire un array d'urls (ordre : main + thumbs)
+      const images = [ mainImage.src, ...thumbs.map(t => t.src) ];
+
+      // Mise à jour visuelle de l'image principale quand on clique sur une miniature
+      thumbs.forEach((thumb, idx) => {
+        thumb.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // mettre la miniature cliquée comme image principale
+          mainImage.src = thumb.src;
+          // ouvrir la lightbox aussi (si tu veux l'ouvrir automatiquement)
+          openLightboxFromIndex(idx + 1); // +1 parce que images[0] est mainImage
+        });
+      });
+
+      // Cliquer sur l'image principale ouvre la lightbox sur l'image principale
+      mainImage.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightboxFromIndex(0);
+      });
+
+      // ouvre la lightbox à un index précis
+      function openLightboxFromIndex(index){
+        // protection index
+        if(index < 0) index = 0;
+        if(index >= images.length) index = images.length -1;
+        lbImg.src = images[index];
+        lightbox.dataset.index = index; // stocke l'index
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden'; // bloque scroll page
+      }
+
+      // fermer
+      function closeLightbox(){
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) closeLightbox(); // clic sur overlay ferme
+      });
+
+      // navigation previous/next
+      function showNext(){
+        let i = Number(lightbox.dataset.index) || 0;
+        i = (i + 1) % images.length;
+        openLightboxFromIndex(i);
+      }
+      function showPrev(){
+        let i = Number(lightbox.dataset.index) || 0;
+        i = (i - 1 + images.length) % images.length;
+        openLightboxFromIndex(i);
+      }
+
+      nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+      prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+
+      // clavier: left/right/esc
+      document.addEventListener('keydown', (e) => {
+        if(!lightbox.classList.contains('show')) return;
+        if(e.key === 'Escape') closeLightbox();
+        if(e.key === 'ArrowRight') showNext();
+        if(e.key === 'ArrowLeft') showPrev();
+      });
+
+      // si ces images sont des vignettes "petite taille" et que tu as de vraies urls grand format,
+      // remplace images[] par les urls grandes pour un zoom de haute qualité.
+    });
+  </script>
+</body>
+</html>

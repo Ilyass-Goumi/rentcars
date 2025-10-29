@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Rent Car | Paiement</title>
+<link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+
+      <header>
+    <div class="logo1">
+       <a href="index.html"><p>ocation-v</p></a>
+    </div>
+
+    <nav id="nav-menu">
+      <a href="index.html">Home</a>
+     
+      <a href="services.html">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+  <!-- ===== HEADER ===== -->
+ <div class="generale">
+     <div class="textsecurite">
+    <h1>Paiement sécurisé</h1>
+    <p>Finalisez votre réservation en toute confiance</p>
+  </div>
+
+  <!-- ===== PAYMENT CONTAINER ===== -->
+  <section class="pay-container">
+    <div class="pay-card glass-effect">
+      <h2>Méthodes de paiement</h2>
+
+      <div class="pay-methods">
+        <button class="pay-option active" data-method="card">
+          <i class="ri-bank-card-line"></i> Carte Bancaire
+        </button>
+        <button class="pay-option" data-method="paypal">
+          <i class="ri-paypal-fill"></i> PayPal
+        </button>
+        <button class="pay-option" data-method="applepay">
+          <i class="ri-apple-fill"></i> Apple Pay
+        </button>
+      </div>
+
+      <!-- ===== CARD PAYMENT FORM ===== -->
+      <form id="card" class="pay-form active-form">
+        <div class="pay-input-group">
+          <label>Nom sur la carte</label>
+          <input type="text" placeholder="Ex : Ilyass O.">
+        </div>
+
+        <div class="pay-input-group">
+          <label>Numéro de carte</label>
+          <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+        </div>
+
+        <div class="pay-row">
+          <div class="pay-input-group">
+            <label>Expiration</label>
+            <input type="text" placeholder="MM/AA" maxlength="5">
+          </div>
+          <div class="pay-input-group">
+            <label>CVV</label>
+            <input type="password" placeholder="•••" maxlength="3">
+          </div>
+        </div>
+
+        <button class="pay-btn">Payer 800 MAD</button>
+      </form>
+
+      <!-- ===== PAYPAL PAYMENT ===== -->
+      <form id="paypal" class="pay-form">
+        <p>Vous serez redirigé vers PayPal pour finaliser votre paiement.</p>
+        <button class="pay-btn">Continuer avec PayPal</button>
+      </form>
+
+      <!-- ===== APPLE PAY ===== -->
+      <form id="applepay" class="pay-form">
+        <p>Paiement rapide et sécurisé via Apple Pay.</p>
+        <button class="pay-btn">Payer avec Apple Pay</button>
+      </form>
+
+    </div>
+  </section>
+
+ </div>
+  <!-- ===== SUCCESS MODAL ===== -->
+  <div class="pay-success hidden">
+    <div class="success-card">
+      <i class="ri-checkbox-circle-fill"></i>
+      <h3>Paiement réussi !</h3>
+      <p>Merci pour votre confiance. Votre voiture est réservée 🚗</p>
+      <a href="index.html" class="back-btn">Retour à l’accueil</a>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Colonne 1 : Logo et description -->
+    <div class="footer-col">
+      <h2 class="footer-logo">Dacia<span>Drive</span></h2>
+      <p>
+        Découvrez la nouvelle génération Dacia — une fusion entre innovation, performance et fiabilité.
+        Nos véhicules sont conçus pour vous accompagner partout, avec style et efficacité.
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Colonne 2 : Liens rapides -->
+    <div class="footer-col">
+      <h3>Liens rapides</h3>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Modèles</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Boutique</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Colonne 3 : Informations -->
+    <div class="footer-col">
+      <h3>Informations</h3>
+      <ul>
+        <li><a href="#">À propos de Dacia</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Conditions générales</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Support client</a></li>
+      </ul>
+    </div>
+
+    <!-- Colonne 4 : Contact -->
+    <div class="footer-col">
+      <h3>Nous contacter</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</li>
+        <li><i class="fas fa-phone"></i> +212 6 00 00 00 00</li>
+        <li><i class="fas fa-envelope"></i> contact@daciadrive.com</li>
+      </ul>
+      <button class="subscribe-btn">S'abonner à la newsletter</button>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 DaciaDrive | Tous droits réservés — Design by <strong>ILYASSO</strong></p>
+  </div>
+</footer>
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>

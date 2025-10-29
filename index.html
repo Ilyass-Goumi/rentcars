@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ocation-v | Location de véhicules</title>
+  <!-- Lien vers le fichier CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo1">
+        <a href="index.html"><p>ocation-v</p></a>
+    </div>
+
+    <nav id="nav-menu">
+      <a href="#">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+     
+
+    <input type="text" id="msg" placeholder="Écris ton message ici..." />
+<button onclick="send()">Envoyer sur WhatsApp</button>
+
+<script>
+function send() {
+  const numero = "212619318483";
+  const msg = document.getElementById("msg").value;
+  const lien = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+  window.open(lien, "_blank");
+}
+</script>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+
+
+
+
+  <!-- sec1 -->
+    <!-- ===== HERO SECTION ===== -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>RENT A CAR IN MOROCCO</h1>
+      <p>Book cars, chauffeurs and yachts – pay zero commission!</p>
+
+      <div class="hero-buttons">
+        <button class="btn active">Rent</button>
+        <button class="btn">Buy</button>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search by car name e.g. BMW X7">
+        <button class="view-btn">VIEW ALL CARS →</button>
+      </div>
+
+      <div class="car-types">
+        <a href="#">Luxury Cars</a> |
+        <a href="#">Sports Cars</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== BROWSE SECTION ===== -->
+  <section class="browse">
+    <h2>Browse Car Rentals in <span>Casablanca</span></h2>
+    <div class="underline"></div>
+
+    <div class="cities">
+      <a href="marakech.html"><div class="city-card">
+        <img src="https://www.oneclickdrive.ma/application/views/img/home_banner/17482458311688732360marrakech.jpeg?verocd=1.20" alt="Marrakech">
+        <div class="city-info">
+          <h3>Marrakech</h3>
+          <p>10+ Cars Available</p>
+        </div>
+      </div></a>
+
+      <a href="casablanca.html">
+        <div class="city-card">
+        <img src="https://www.oneclickdrive.ma/application/views/img/home_banner/17482459181688732320casablanca.jpeg?verocd=1.20" alt="Casablanca">
+        <div class="city-info">
+          <h3>Casablanca</h3>
+          <p>10+ Cars Available</p>
+        </div>
+      </div>
+      </a>
+
+     
+     
+    </div>
+  </section>
+
+  <!-- ===== BACK TO TOP BUTTON ===== -->
+  <button class="to-top">↑</button>
+
+  <section class="hero">
+    <h1>Bienvenue chez ocation-v</h1>
+    <p>Louez facilement votre véhicule en toute confiance — rapide, sûr et au meilleur prix.</p>
+   <a href="offres.html"> <button class="btn-primary">Découvrir nos offres</button></a>
+  </section>
+
+
+
+
+
+  
+
+  <!-- ===== WHY CHOOSE US SECTION ===== -->
+<section class="why-us">
+  <h2>Why <span>ocation-v</span> is the #1 Car Marketplace</h2>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="icon">
+        🚗
+      </div>
+      <h3>12000+ Verified Cars</h3>
+      <p>Choose from economy to exotic, luxury, sports cars, and SUVs for any occasion.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">
+        📱
+      </div>
+      <h3>Unmatched Pricing</h3>
+      <p>Daily, weekly, and monthly rental rates updated in real-time for the best deals.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">
+        💰
+      </div>
+      <h3>Pay Zero Commission</h3>
+      <p>Skip the middleman and connect directly via WhatsApp or phone with the car rental company.</p>
+    </div>
+  </div>
+
+  <button class="offers-btn">View Offers →</button>
+</section>
+
+  <!-- sec for colection page 1 -->
+
+    <section class="car-section">
+    <h1>Rent from Top Car Brands</h1>
+    <p class="subtitle">
+      Choose a Morocco rent a car from several leading automobile brands such as Audi, BMW, Jaguar, Land Rover, Mercedes-Benz, Mini, Porsche, and Volkswagen for your trip to Morocco.
+    </p>
+
+    <div class="car-grid">
+
+      <!-- Hyundai -->
+      <div class="car-card1">
+        <div class="car-img">
+          <img src="https://static.oneclickdrive.com/uploads/Hyundai_Tucson_2023_19409_19409_18939772915-6_small.jpg" alt="Hyundai Tucson 2023">
+          <button class="offer-btn">View Offer</button>
+        </div>
+        <h3>Hyundai Tucson 2023</h3>
+        <div class="price-info">
+          <p><span class="price">MAD 590</span> / day</p>
+          <p><span class="price">MAD 15,600</span> / mo. <span class="km">4500 km</span></p>
+        </div>
+      </div>
+
+      <!-- Audi -->
+      <div class="car-card1">
+        <div class="car-img">
+          <img src="https://static.oneclickdrive.com/uploads/Audi_Q3_2023_31811_31811_25900761857-1_small.jpg" alt="Audi Q3 2023">
+          <button class="offer-btn">View Offer</button>
+        </div>
+        <h3>Audi Q3 2023</h3>
+        <div class="price-info">
+          <p><span class="price">MAD 1430</span> / day</p>
+          <p><span class="price">MAD 35,100</span> / mo. <span class="km">6000 km</span></p>
+        </div>
+      </div>
+
+      <!-- Dacia -->
+      <div class="car-card1">
+        <div class="car-img">
+          <img src="https://static.oneclickdrive.com/uploads/Dacia_Duster_2024_31749_31749_25877918081-1_small.jpg" alt="Dacia Duster 2024">
+          <button class="offer-btn">View Offer</button>
+        </div>
+        <h3>Dacia Duster 2024</h3>
+        <div class="price-info">
+          <p><span class="price">MAD 450</span> / day</p>
+          <p><span class="price">MAD 11,700</span> / mo. <span class="km">6000 km</span></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+      
+
+
+    <!-- ===== RENTAL SECTION ===== -->
+   <section class="rental-section">
+
+    <!-- Bloc 1 : Image + texte à droite -->
+    <div class="rental-top">
+      <div class="rental-image">
+        <img src="https://www.oneclickdrive.ma/application/views/img/car-rental-agent-w-new.jpg?var=1.09" alt="Car Rental Manager">
+      </div>
+
+      <div class="rental-text">
+        <h2>Are you a car rental company?</h2>
+        <p>Join the OneClickDrive car marketplace. Get bookings. Keep 100%.</p>
+        <button class="list-btn">List Your Cars →</button>
+      </div>
+    </div>
+
+    <!-- Bloc 2 : Texte + image à droite -->
+    <div class="rental-bottom">
+      <div class="rental-info">
+        <h3>Rent a Car in Morocco is Now Easier</h3>
+        <p>
+          Renting a car in Morocco is the key to hassle free transportation across this beautiful country. 
+          Whatever the purpose of the trip, whether it’s a family holiday, business trip or personal adventure, 
+          there are many experiences this country has to offer that are unique and unforgettable.
+        </p>
+        <p>
+          Having all the affordable and premium vehicles at your fingertips, it is now easier than ever to rent a Car 
+          Morocco and discover the country’s vibrant cities and secretive landscapes. From dunes of the desert to the 
+          coastal roads, a rental car will provide you with the freedom to travel at your own pace.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <div class="rental-illustration">
+        <img src="https://www.oneclickdrive.ma/application/views/img/best-car-rental.webp?var=1.09" alt="App and Car">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- section for end -->
+
+
+  <section class="car-deal-section">
+  <h2>Car Hire Deal <span>Types in Morocco</span></h2>
+
+  <div class="deal-container">
+    <div class="deal-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Short Term Car Rental">
+      <h3><span class="highlight">Short Term</span> Car Rental</h3>
+      <p>Rent a car in Morocco for your daily and weekly plans through VIP Cars’ short term deals. Through such deals, you can get a vehicle for up to 2 weeks at the cheapest prices.</p>
+    </div>
+
+    <div class="deal-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Long Term Car Rental">
+      <h3><span class="highlight">Long Term</span> Car Rental Morocco</h3>
+      <p>For your extended plans, our popular Morocco monthly car rental deals are available for durations ranging from 1 month to 6 months (and even more) and comprise the lowest possible daily rates.</p>
+    </div>
+
+    <div class="deal-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Last Minute Car Hire">
+      <h3><span class="highlight">Last Minute</span> Car Hire</h3>
+      <p>VIPCars offers numerous last minute car rental deals for your impromptu plans. Depending on availability, we provide rentals on short notice at the most affordable prices.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Colonne 1 : Logo et description -->
+    <div class="footer-col">
+      <h2 class="footer-logo">Dacia<span>Drive</span></h2>
+      <p>
+        Découvrez la nouvelle génération Dacia — une fusion entre innovation, performance et fiabilité.
+        Nos véhicules sont conçus pour vous accompagner partout, avec style et efficacité.
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Colonne 2 : Liens rapides -->
+    <div class="footer-col">
+      <h3>Liens rapides</h3>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Modèles</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Boutique</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Colonne 3 : Informations -->
+    <div class="footer-col">
+      <h3>Informations</h3>
+      <ul>
+        <li><a href="#">À propos de Dacia</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Conditions générales</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Support client</a></li>
+      </ul>
+    </div>
+
+    <!-- Colonne 4 : Contact -->
+    <div class="footer-col">
+      <h3>Nous contacter</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</li>
+        <li><i class="fas fa-phone"></i> +212 6 00 00 00 00</li>
+        <li><i class="fas fa-envelope"></i> contact@daciadrive.com</li>
+      </ul>
+      <button class="subscribe-btn">S'abonner à la newsletter</button>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 DaciaDrive | Tous droits réservés — Design by <strong>ILYASSO</strong></p>
+  </div>
+</footer>
+
+  <!-- Lien vers le script JS -->
+
+  <!-- Lien vers le script JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
