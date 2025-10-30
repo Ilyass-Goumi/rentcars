@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ocation-v | Location de véhicules</title>
-  <!-- Lien vers le fichier CSS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css">
+  <title>Accueil RentCar</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ✅ Écran de chargement */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    /* 🔄 Rond orange animé */
+    .circle {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255, 165, 0, 0.3);
+      border-top-color: orange;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 🌍 Contenu du site (masqué au début) */
+    #main-content {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #main-content.visible {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
+  <!-- 💫 Animation de chargement -->
+  <div id="loader">
+    <div class="circle"></div>
+  </div>
+
+  <!-- 🌐 Ton contenu du site -->
+  <div id="main-content">
+    <header>
     <div class="logo1">
         <a href="index.html"><p>ocation-v</p></a>
     </div>
@@ -319,11 +372,32 @@
     <p>© 2025 DaciaDrive | Tous droits réservés — Design by <strong>ILYASSO</strong></p>
   </div>
 </footer>
+  </div>
 
-  <!-- Lien vers le script JS -->
+  <script>
+    // Vérifie si le loader a déjà été affiché pendant la session
+    const alreadyLoaded = sessionStorage.getItem("loaderShown");
 
-  <!-- Lien vers le script JS -->
-<script src="script.js"></script>
+    if (!alreadyLoaded) {
+      // Si ce n’est pas encore affiché → montre le loader
+      const loader = document.getElementById("loader");
+      const content = document.getElementById("main-content");
 
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          loader.style.visibility = "hidden";
+          content.classList.add("visible");
+          // Marque le loader comme affiché
+          sessionStorage.setItem("loaderShown", "true");
+        }, 3000); // ⏱️ durée de l’animation (3 secondes)
+      });
+    } else {
+      // Si déjà affiché → montrer directement le contenu
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("main-content").classList.add("visible");
+    }
+  </script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

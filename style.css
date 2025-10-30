@@ -2665,3 +2665,61 @@ textarea {
   from { transform: translateY(0); }
   to { transform: translateY(-20px); }
 }
+
+
+.logo1 a{
+  color: black;
+}
+
+
+
+
+/* loader css */
+   /* 🌈 Animation d’arrière-plan fluide */
+    .loader-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(270deg, #ff6a00, #ff8c00, #ffae00, #ff6a00);
+      background-size: 800% 800%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: gradientFlow 10s ease infinite;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ⚙️ Logo rond qui tourne */
+    .loader-logo {
+      width: 90px;
+      height: 90px;
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 🌐 Contenu du site (masqué au début) */
+    .site-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease;
+    }
+
+    .site-visible {
+      opacity: 1;
+      visibility: visible;
+    }

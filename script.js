@@ -268,3 +268,14 @@ payButtons.forEach(btn => {
   });
 });
 
+
+
+  // ⏳ Affiche le site après 5 secondes
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.opacity = "0";
+        document.getElementById("loader").style.visibility = "hidden";
+        document.getElementById("mainSite").classList.add("site-visible");
+      }, 5000);
+    });
+

@@ -1,26 +1,191 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elite Rent Car | Paiement</title>
-<link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement Sécurisé - Rent Car</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .payment-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 15px;
+      background: linear-gradient(135deg, #f5f7fa, #e4ebf1);
+      min-height: 100vh;
+    }
+
+    .payment-container {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      transition: 0.4s ease;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .payment-form {
+      flex: 1;
+      background: #f9fafc;
+      padding: 40px;
+      border-right: 1px solid #eee;
+    }
+
+    .payment-form h2 {
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: #222;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      color: #555;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+      outline: none;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .order-summary {
+      flex: 1;
+      padding: 40px;
+      background: linear-gradient(135deg, #007bff, #00aaff);
+      color: white;
+    }
+
+    .order-summary h2 {
+      font-size: 26px;
+      margin-bottom: 25px;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .pay-btn {
+      width: 100%;
+      margin-top: 30px;
+      background: linear-gradient(135deg, #ff6600, #ff8800);
+      border: none;
+      padding: 15px;
+      border-radius: 50px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pay-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+    }
+
+    .pay-btn.loading {
+      color: transparent;
+      pointer-events: none;
+    }
+
+    .pay-btn.loading::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 28px;
+      height: 28px;
+      border: 3px solid white;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @media (max-width: 900px) {
+      .payment-container {
+        flex-direction: column;
+      }
+      .payment-form, .order-summary {
+        border: none;
+        padding: 30px;
+      }
+      .order-summary {
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+    }
+  </style>
 </head>
 <body>
-
-
-      <header>
+   
+  <header>
     <div class="logo1">
-       <a href="index.html"><p>ocation-v</p></a>
+        <a href="index.html"><p>ocation-v</p></a>
     </div>
 
     <nav id="nav-menu">
       <a href="index.html">Home</a>
-     
       <a href="services.html">Services</a>
-      <a href="#">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
+     
+
+    
 
     <div class="hamburger" id="hamburger">
       <span></span>
@@ -28,83 +193,67 @@
       <span></span>
     </div>
   </header>
-  <!-- ===== HEADER ===== -->
- <div class="generale">
-     <div class="textsecurite">
-    <h1>Paiement sécurisé</h1>
-    <p>Finalisez votre réservation en toute confiance</p>
-  </div>
+  <div class="payment-wrapper">
+    <div class="payment-container">
+      <!-- FORMULAIRE DE PAIEMENT -->
+      <div class="payment-form">
+        <h2>Paiement Sécurisé</h2>
 
-  <!-- ===== PAYMENT CONTAINER ===== -->
-  <section class="pay-container">
-    <div class="pay-card glass-effect">
-      <h2>Méthodes de paiement</h2>
+        <div class="input-group">
+          <label for="cardName">Nom du titulaire</label>
+          <input type="text" id="cardName" placeholder="John Doe">
+        </div>
 
-      <div class="pay-methods">
-        <button class="pay-option active" data-method="card">
-          <i class="ri-bank-card-line"></i> Carte Bancaire
-        </button>
-        <button class="pay-option" data-method="paypal">
-          <i class="ri-paypal-fill"></i> PayPal
-        </button>
-        <button class="pay-option" data-method="applepay">
-          <i class="ri-apple-fill"></i> Apple Pay
-        </button>
+        <div class="input-group">
+          <label for="cardNumber">Numéro de carte</label>
+          <input type="text" id="cardNumber" maxlength="16" placeholder="1234567812345678">
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="expiry">Date d’expiration</label>
+            <input type="text" id="expiry" placeholder="MM/YY">
+          </div>
+          <div class="input-group">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" maxlength="3" placeholder="***">
+          </div>
+        </div>
+
+        <button class="pay-btn" id="payNow">Payer Maintenant</button>
       </div>
 
-      <!-- ===== CARD PAYMENT FORM ===== -->
-      <form id="card" class="pay-form active-form">
-        <div class="pay-input-group">
-          <label>Nom sur la carte</label>
-          <input type="text" placeholder="Ex : Ilyass O.">
+      <!-- RÉSUMÉ COMMANDE -->
+      <div class="order-summary">
+        <h2>Résumé de la commande</h2>
+
+        <div class="order-item">
+          <p>Voiture</p>
+          <p>Mercedes GLC 2024</p>
         </div>
 
-        <div class="pay-input-group">
-          <label>Numéro de carte</label>
-          <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+        <div class="order-item">
+          <p>Durée</p>
+          <p>5 jours</p>
         </div>
 
-        <div class="pay-row">
-          <div class="pay-input-group">
-            <label>Expiration</label>
-            <input type="text" placeholder="MM/AA" maxlength="5">
-          </div>
-          <div class="pay-input-group">
-            <label>CVV</label>
-            <input type="password" placeholder="•••" maxlength="3">
-          </div>
+        <div class="order-item">
+          <p>Prix / Jour</p>
+          <p>MAD 750</p>
         </div>
 
-        <button class="pay-btn">Payer 800 MAD</button>
-      </form>
+        <div class="order-item">
+          <p>Assurance</p>
+          <p>MAD 200</p>
+        </div>
 
-      <!-- ===== PAYPAL PAYMENT ===== -->
-      <form id="paypal" class="pay-form">
-        <p>Vous serez redirigé vers PayPal pour finaliser votre paiement.</p>
-        <button class="pay-btn">Continuer avec PayPal</button>
-      </form>
-
-      <!-- ===== APPLE PAY ===== -->
-      <form id="applepay" class="pay-form">
-        <p>Paiement rapide et sécurisé via Apple Pay.</p>
-        <button class="pay-btn">Payer avec Apple Pay</button>
-      </form>
-
-    </div>
-  </section>
-
- </div>
-  <!-- ===== SUCCESS MODAL ===== -->
-  <div class="pay-success hidden">
-    <div class="success-card">
-      <i class="ri-checkbox-circle-fill"></i>
-      <h3>Paiement réussi !</h3>
-      <p>Merci pour votre confiance. Votre voiture est réservée 🚗</p>
-      <a href="index.html" class="back-btn">Retour à l’accueil</a>
+        <div class="total">
+          <p>Total</p>
+          <p>MAD 3,950</p>
+        </div>
+      </div>
     </div>
   </div>
-
-
   <footer class="footer">
   <div class="footer-container">
     
@@ -163,6 +312,37 @@
     <p>© 2025 DaciaDrive | Tous droits réservés — Design by <strong>ILYASSO</strong></p>
   </div>
 </footer>
+
+  <script>
+    const payBtn = document.getElementById('payNow');
+
+    payBtn.addEventListener('click', () => {
+      const name = document.getElementById('cardName').value.trim();
+      const number = document.getElementById('cardNumber').value.trim();
+      const expiry = document.getElementById('expiry').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+
+      // Vérification simple des champs
+      const valid =
+        name.length >= 3 &&
+        /^\d{16}$/.test(number) &&
+        /^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry) &&
+        /^\d{3}$/.test(cvv);
+
+      // Animation du bouton
+      payBtn.classList.add('loading');
+
+      setTimeout(() => {
+        payBtn.classList.remove('loading');
+
+        if (valid) {
+          alert("✅ Votre paiement a été effectué avec succès !");
+        } else {
+          alert("❌ Paiement échoué ! Vérifiez vos informations.");
+        }
+      }, 2000);
+    });
+  </script>
   <script type="module" src="script.js"></script>
 
 </body>
